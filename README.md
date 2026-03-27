@@ -1,6 +1,14 @@
 # nemesis8-pokeballs
 
-Sealed container specs for [nemesis8](https://nemesis8.nuts.services). Each pokeball captures a project's runtime, dependencies, and security policy so you can run AI agents against it in isolation.
+Sealed container specs for [nemesis8](https://nemesis8.nuts.services).
+
+A pokeball captures a project's runtime, dependencies, and security policy so you can run AI agents against it in isolation.
+
+## What's a Pokeball?
+
+nemesis8 ships with four built-in providers: **Codex**, **Gemini**, **Claude Code**, and **OpenClaw**. These are just pokeballs that come pre-installed — same pattern, same container isolation, same tool injection.
+
+A pokeball is any AI environment you can capture, seal, and run. The built-in ones are shorthand for the most common CLIs. Everything in this registry is a pokeball anyone can make. Name it something cool.
 
 ## Usage
 
@@ -15,14 +23,27 @@ nemesis8 pokeball seal hyperagents
 nemesis8 pokeball run hyperagents --prompt "analyze the architecture"
 ```
 
-## Available Pokeballs
+## Built-in Providers
+
+These ship with nemesis8 and don't need a pokeball:
+
+| Provider | Command | What it is |
+|----------|---------|------------|
+| Codex | `nemesis8 interactive` | OpenAI Codex CLI |
+| Gemini | `nemesis8 --provider gemini interactive` | Google Gemini CLI |
+| Claude | `nemesis8 --provider claude interactive` | Anthropic Claude Code |
+| OpenClaw | `nemesis8 --provider openclaw interactive` | OpenClaw agent platform |
+
+Same container, same 69 MCP tools, same session persistence. Just different brains.
+
+## Community Pokeballs
 
 | Name | Language | Source | Description |
 |------|----------|--------|-------------|
 | [hyperagents](hyperagents/) | Python | [facebookresearch/hyperagents](https://github.com/facebookresearch/hyperagents) | Self-referential self-improving agents |
 | [trustgraph](trustgraph/) | Python | [trustgraph-ai/trustgraph](https://github.com/trustgraph-ai/trustgraph) | Graph-native knowledge platform with MCP tools |
 
-## Submitting a Pokeball
+## Make Your Own
 
 Capture any project and publish it:
 
@@ -31,9 +52,7 @@ nemesis8 pokeball capture https://github.com/user/repo
 nemesis8 pokeball publish repo-name --description "what it does"
 ```
 
-This creates a PR on this repo. Once merged, anyone can `nemesis8 pokeball pull` it.
-
-Or submit manually — add a directory with a `pokeball.yaml` spec and open a PR.
+This creates a PR on this repo. Once merged, anyone can pull it. Or submit manually — add a directory with a `pokeball.yaml` spec and open a PR.
 
 ## Spec Format
 
