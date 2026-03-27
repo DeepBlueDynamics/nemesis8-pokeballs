@@ -20,6 +20,7 @@ nemesis8 pokeball run hyperagents --prompt "analyze the architecture"
 | Name | Language | Source | Description |
 |------|----------|--------|-------------|
 | [hyperagents](hyperagents/) | Python | [facebookresearch/hyperagents](https://github.com/facebookresearch/hyperagents) | Self-referential self-improving agents |
+| [trustgraph](trustgraph/) | Python | [trustgraph-ai/trustgraph](https://github.com/trustgraph-ai/trustgraph) | Graph-native knowledge platform with MCP tools |
 
 ## Submitting a Pokeball
 
