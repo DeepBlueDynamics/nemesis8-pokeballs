@@ -1,0 +1,53 @@
+apiVersion: pokeball/v1
+metadata:
+  name: trustgraph
+  description: ''
+source:
+  local:
+    path: \\?\C:\Users\kordl\Code\Gnosis\trustgraph
+runtime:
+  base_image: python:3.12-slim-bookworm
+  language: python
+  package_manager: pip
+  node_version: null
+  existing_dockerfile: null
+build:
+  install_cmd: pip install -r requirements.txt
+  build_cmd: null
+  system_packages:
+  - git
+  - curl
+  - tini
+  exclude:
+  - .git
+  - '*.log'
+  - .env*
+  - __pycache__
+  - .venv
+  - '*.pyc'
+provider:
+  name: anthropic
+  model: claude-sonnet-4-20250514
+  api_key_env: ANTHROPIC_API_KEY
+tools:
+  allow:
+  - name: bash
+  - name: file_read
+  - name: file_write
+  - name: grep
+  - name: glob
+security:
+  network:
+    policy: deny
+  filesystem:
+    read_only_root: true
+    work_mount: rw
+  process:
+    user: pokeball
+    no_new_privileges: true
+    drop_capabilities:
+    - ALL
+resources:
+  memory_mb: 4096
+  pids_limit: 256
+  timeout_minutes: 60
